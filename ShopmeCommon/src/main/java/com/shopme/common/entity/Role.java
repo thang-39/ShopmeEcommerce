@@ -1,12 +1,12 @@
 package com.shopme.common.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
+import java.util.Objects;
+
+@Getter
+@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,33 +23,25 @@ public class Role {
     @Column(length = 150, nullable = false)
     private String description;
 
+    public Role(int id) {
+        this.id = id;
+    }
 
-//    public Role(String name, String description) {
-//        this.name = name;
-//        this.description = description;
-//    }
-//
-//    public int getId() {
-//        return id;
-//    }
-//
-//    public String getName() {
-//        return name;
-//    }
-//
-//    public String getDescription() {
-//        return description;
-//    }
-//
-//    public void setId(int id) {
-//        this.id = id;
-//    }
-//
-//    public void setName(String name) {
-//        this.name = name;
-//    }
-//
-//    public void setDescription(String description) {
-//        this.description = description;
-//    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Role role = (Role) o;
+        return id == role.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
+    }
 }
