@@ -65,7 +65,7 @@
         </div>
 
         <form th:action="@{/users/save}" method="post" style="max-width: 700px; margin: 0 auto"
-        th:object="${user}">
+              th:object="${user}" onsubmit="return checkEmailUnique(this)">
             <div class="border border-secondary rounded p-3">
 <!--                Email -->
                 <div class="form-group row">
@@ -126,6 +126,47 @@
 
             </div>
         </form>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal Title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Modal body text goes here.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!--        duplicated email dialog -->
+        <div class="modal fade text-center" id="modalDialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+<!--                    header of dialog-->
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="modalTitle">Warning</h4>
+                        <button type="button" class="close" data-dimiss="modal">&times;</button>
+                    </div>
+<!--                    body of dialog-->
+                    <div class="modal-body">
+                        <span id="modalBody"></span>
+                    </div>
+<!--                    footer with close button-->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dimiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
 
         <div class="text-center">
             <p>Shopme Control Panel - Copyright &copy; Shopme</p>
@@ -137,6 +178,28 @@
                 window.location = "[[@{/users}]]";
             });
         });
+
+        function checkEmailUnique(form) {
+            url = "[[@{/users/check_email}]]";
+            userEmail = $("#email").val();
+            csrfValue = $("input[name='_csrf']").val();
+<!--            params = {userEmail, csrf};-->
+            params = {email: userEmail, _csrf: csrfValue};
+
+            $("#modalDialog").modal();
+
+            if (true) return false;
+
+            $.post(url, params, function(response) {
+                if (response == "OK") {
+                    form.submit();
+                } else if (response == "Duplicated") {
+                    alert("There is another user having the email " + userEmail);
+                }
+            });
+
+            return false;
+        }
     </script>
 
 </body>
