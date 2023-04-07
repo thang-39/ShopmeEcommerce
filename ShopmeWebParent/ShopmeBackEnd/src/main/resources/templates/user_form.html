@@ -128,13 +128,13 @@
         </form>
 
 <!--        duplicated email dialog -->
-        <div class="modal fade text-center" id="modalDialog" role="dialog">
-            <div class="modal-dialog" role="dialog">
+        <div class="modal fade text-center" id="modalDialog">
+            <div class="modal-dialog">
                 <div class="modal-content">
 <!--                    header of dialog-->
                     <div class="modal-header">
                         <h4 class="modal-title" id="modalTitle">Warning</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
                     </div>
 <!--                    body of dialog-->
                     <div class="modal-body">
@@ -142,7 +142,7 @@
                     </div>
 <!--                    footer with close button-->
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                     </div>
 
                 </div>
@@ -171,14 +171,14 @@
                 if (response == "OK") {
                     form.submit();
                 } else if (response == "Duplicated") {
-                    alert("There is another user having the email " + userEmail);
-                    showModalDialog("Warning " + "There is another user having the email " + userEmail);
+<!--                    alert("There is another user having the email " + userEmail);-->
+                    showModalDialog("Warning " , "There is another user having the email " + userEmail);
                 } else {
                     alert("Error - Unknown response from server");
                 }
             }).fail(function() {
-                showModalDialog("Error " + "Could not connect to the server");
-                alert("Error - Could not connect to the server");
+                showModalDialog("Error ", "Could not connect to the server");
+<!--                alert("Error - Could not connect to the server");-->
             });
             return false;
         }
@@ -186,7 +186,7 @@
         function showModalDialog(title, message) {
             $("#modalTitle").text(title);
             $("#modalBody").text(message);
-            $("#modalDialog").modal();
+            $("#modalDialog").modal("show");
         }
 
     </script>
