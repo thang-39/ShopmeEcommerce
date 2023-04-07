@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <title>Create New User</title>
+    <title>[[${pageTitle}]]</title>
 
 <!--    bootstrap declaration-->
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
@@ -61,11 +61,12 @@
         </div>
 
         <div>
-            <h2>Manage Users | Create New User</h2>
+            <h2>Manage Users | [[${pageTitle}]]</h2>
         </div>
 
         <form th:action="@{/users/save}" method="post" style="max-width: 700px; margin: 0 auto"
               th:object="${user}" onsubmit="return checkEmailUnique(this)">
+            <input type="hidden" th:filed="*{id}" />
             <div class="border border-secondary rounded p-3">
 <!--                Email -->
                 <div class="form-group row">
@@ -164,8 +165,9 @@
         function checkEmailUnique(form) {
             url = "[[@{/users/check_email}]]";
             userEmail = $("#email").val();
+            userId = $("#id").val();
             csrfValue = $("input[name='_csrf']").val();
-            params = {email: userEmail, _csrf: csrfValue};
+            params = {id: userId, email: userEmail, _csrf: csrfValue};
 
             $.post(url, params, function(response) {
                 if (response == "OK") {
