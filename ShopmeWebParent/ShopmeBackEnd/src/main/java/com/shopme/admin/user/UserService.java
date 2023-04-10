@@ -74,4 +74,14 @@ public class UserService {
             throw new UserNotFoundException("Could not find any user with ID " + id);
         }
     }
+
+    public void delete(Integer id) throws UserNotFoundException {
+        // why use count - to return only number of user - if we use findById it will return full detail user
+        Long countById = userRepo.countById(id);
+        if (countById == null || countById == 0) {
+            throw new UserNotFoundException("Counld not find any user with ID " + id);
+        }
+
+        userRepo.deleteById(id);
+    }
 }
