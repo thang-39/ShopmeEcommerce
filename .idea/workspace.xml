@@ -80,22 +80,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PasswordEncoderTest.testEncodePassword" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ShopmeBackEnd" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.shopme.admin.user.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.shopme.admin.user" />
-      <option name="MAIN_CLASS_NAME" value="com.shopme.admin.user.PasswordEncoderTest" />
-      <option name="METHOD_NAME" value="testEncodePassword" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="UserRepositoryTests.testCountById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ShopmeBackEnd" />
       <extension name="coverage">
@@ -112,7 +96,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserRepositoryTests.testCreateNewUserWithTwoRoles" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserRepositoryTests.testDisableUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ShopmeBackEnd" />
       <extension name="coverage">
         <pattern>
@@ -122,7 +106,23 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.shopme.admin.user" />
       <option name="MAIN_CLASS_NAME" value="com.shopme.admin.user.UserRepositoryTests" />
-      <option name="METHOD_NAME" value="testCreateNewUserWithTwoRoles" />
+      <option name="METHOD_NAME" value="testDisableUser" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserRepositoryTests.testEnableUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ShopmeBackEnd" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.shopme.admin.user.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.shopme.admin.user" />
+      <option name="MAIN_CLASS_NAME" value="com.shopme.admin.user.UserRepositoryTests" />
+      <option name="METHOD_NAME" value="testEnableUser" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -147,10 +147,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.ShopmeBackEndApplication" />
+        <item itemvalue="JUnit.UserRepositoryTests.testEnableUser" />
+        <item itemvalue="JUnit.UserRepositoryTests.testDisableUser" />
         <item itemvalue="JUnit.UserRepositoryTests.testCountById" />
         <item itemvalue="JUnit.UserRepositoryTests.testGetUserByEmail" />
-        <item itemvalue="JUnit.PasswordEncoderTest.testEncodePassword" />
-        <item itemvalue="JUnit.UserRepositoryTests.testCreateNewUserWithTwoRoles" />
       </list>
     </recent_temporary>
   </component>

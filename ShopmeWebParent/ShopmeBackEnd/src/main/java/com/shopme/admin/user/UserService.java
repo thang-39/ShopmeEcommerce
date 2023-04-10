@@ -5,11 +5,13 @@ import com.shopme.common.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.NoSuchElementException;
 
 @Service
+@Transactional
 public class UserService {
 
     @Autowired
@@ -81,7 +83,10 @@ public class UserService {
         if (countById == null || countById == 0) {
             throw new UserNotFoundException("Counld not find any user with ID " + id);
         }
-
         userRepo.deleteById(id);
+    }
+
+    public void updateUserEnableStatus(Integer id, boolean enable) {
+        userRepo.updateEnabledStatus(id, enable);
     }
 }
